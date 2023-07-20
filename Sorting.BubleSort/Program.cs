@@ -26,11 +26,8 @@ namespace Sorting.BubleSort
                     }
                 }
             }
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                Console.Write(numbers[i] +" -");
 
-            }
+            Console.WriteLine(string.Join(",",numbers));
 
             Console.ReadLine();
 
