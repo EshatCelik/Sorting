@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Sorting.BubleSort
 {
@@ -7,36 +9,29 @@ namespace Sorting.BubleSort
         static void Main(string[] args)
         {
             int[] numbers = { 3, 5, 2, 11, 6, 7, 4, 8, 33 };
-           //               { 2, 5, 3, 11, 6, 7, 4, 8, 33 };
-           //               { 2, 3, 5, 11, 6, 7, 4, 8, 33 };
-           //               { 2, 3, 4, 11, 6, 7, 5, 8, 33 };
-           //               { 2, 3, 4, 6, 11, 7, 5, 8, 33 };
-           //               { 2, 3, 4, 5, 11, 7, 6, 8, 33 };
-           //               { 2, 3, 4, 5, 7, 11, 6, 8, 33 };
-           //               { 2, 3, 4, 5, 6, 11, 7, 8, 33 };
-           //               { 2, 3, 4, 5, 6, 11, 7, 8, 33 };
-           //                       //
-           //                       //
-           //                       //
 
+            BubleSort(numbers);
+            Console.WriteLine(string.Join(",", numbers));
 
-            for (int i = 0; i < numbers.Length-1; i++)
+            Console.ReadLine();
+
+        }
+
+        static void BubleSort<T>(T[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int j = i+1; j < numbers.Length; j++)
+                for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (numbers[i] > numbers[j])
+                    if (Comparer<T>.Default.Compare(array[i], array[j]) > 0)
                     {
-                        int temp = numbers[i];
-                        numbers[i] = numbers[j];
-                        numbers[j] = temp;
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
 
                     }
                 }
             }
-
-            Console.WriteLine(string.Join(",",numbers));
-
-            Console.ReadLine();
 
         }
     }
