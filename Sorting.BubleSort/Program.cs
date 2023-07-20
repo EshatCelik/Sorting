@@ -17,13 +17,13 @@ namespace Sorting.BubleSort
 
         }
 
-        static void BubleSort<T>(T[] array)
+        static void BubleSort<T>(T[] array) where T : IComparable
         {
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (Comparer<T>.Default.Compare(array[i], array[j]) > 0)
+                    if (array[i].CompareTo(array[j])>0)
                     {
                         var temp = array[i];
                         array[i] = array[j];
