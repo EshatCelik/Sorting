@@ -47,6 +47,10 @@ namespace NodeSorting
             public void Delete(int data)
             {
                 var node = new Node(data);  //      10 - 15 - 20 - 25 - 30
+                if (Head==null)
+                {
+                    return;
+                }
                 if (node.Data == Head.Data)
                 {
                     Head = Head.Next;
@@ -54,20 +58,37 @@ namespace NodeSorting
                 else
                 {
                     var current = Head;
-                    var prep = Head;
                     while (current.Next != null)
                     {
-                        //prep = current;
-                        current = current.Next;
                         if (current.Next.Data==data)
                         {
                             current.Next=current.Next.Next;
                             return;
                         }
                         current=current.Next;
-
                     }
                 }
+            }
+
+            public void Update(int oldData,int newData)
+            {                                              //10 ,15,20 ,30 ,40
+                var node = new Node(newData);              //10    ,50 ,30 ,40
+                if (Head==null)
+                {
+                    return;
+                }
+                var current = Head;
+                while (current.Data!=null)
+                {
+                    if (current.Data==oldData)
+                    {
+                        current.Data = newData;
+                        return;
+                    }
+                    current=current.Next;
+                }
+
+
             }
 
             public void Display()
@@ -90,11 +111,12 @@ namespace NodeSorting
             linked.Add(20);
             linked.Add(25);
             linked.Add(30);
+            linked.Add(35);
 
             //---Silme
-            linked.Delete(15);
-            linked.Delete(25);
-            linked.Delete(30);
+            linked.Update(10,1);
+            linked.Update(20,2);
+            linked.Update(30,3);
 
             linked.Display();
 
